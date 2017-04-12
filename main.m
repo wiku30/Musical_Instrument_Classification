@@ -1,2 +1,2 @@
-L1=spec('in3.wav');
-L2=spec('in7.wav');
+
+P2=spec('wav/in5.wav');
