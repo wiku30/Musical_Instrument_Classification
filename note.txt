@@ -1,4 +1,7 @@
-2017/4/12
-谐波分布不仅与谐波阶数相关，还与频率段有关。（激励源-滤波器模型）
-击弦乐器泛音衰减比基音更快，故在同一音中频谱随时间变化。可能可作为击弦乐器的判定。
-短时傅立叶变换改用Hanning窗，减少泄漏和截断问题。
+2017/4/12 update
+
+Noticed that harmonic pattern is also relevent to its absolute frequency(because of resonance properties of the instrument). So naive analysis on harmonic patterns does not work.
+
+For hammered string instruments(e.g. piano), harmonics decay faster than fundemental, so spectrum varies with time even in one note. May serve as a criteria of this type.
+
+Now uses Hanning window in STFT instead of rectangle window to ameliorate sudden change on the edge.
