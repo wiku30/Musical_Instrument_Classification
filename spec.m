@@ -17,10 +17,10 @@ function [L]=spec(varargin)
     set(gcf, 'position', [0 0 600 1000]);
     subplot(2,1,1);
     plot(0:fs/n:fs-0.1,amp);
-    xlim([0,10000]);
+    xlim([0,8000]);
     subplot(2,1,2);
     plot(0:fs/n:fs-0.1,amp);
-    xlim([0,10000]);
+    xlim([0,8000]);
     set(gca,'YScale','log');
 
     thre1=4;
