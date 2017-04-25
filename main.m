@@ -1,4 +1,4 @@
 figure(1);
-[L1,m1]=ceps('wav/music/歌无形.mp3',59.3);
+S1=spec('wav/a.ogg',0.5);
 figure(2);
-S=spec('wav/music/歌无形.mp3',59.3);
+S2=spec('wav/a.ogg',2.5);
