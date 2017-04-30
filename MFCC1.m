@@ -1,26 +1,28 @@
 function MFCC1( filename,time )
-%UNTITLED ¶ÁÈ¡ÊäÈëµÄÒôÆµ£¬×öMFCC²¢Êä³ö12¸ö²ÎÊıµÄÍ¼£¬timeµ¥Î»ÎªºÁÃë¡£
-%  ÔÚÊ±¼äÎªtime³ö½ØÈ¡256¸ösampleÇóMFCC£¬timeµ¥Î»ÎªºÁÃë¡£
+%UNTITLED è¯»å–è¾“å…¥çš„éŸ³é¢‘ï¼ŒåšMFCCå¹¶è¾“å‡º12ä¸ªå‚æ•°çš„å›¾ï¼Œtimeå•ä½ä¸ºæ¯«ç§’ã€‚
+%  åœ¨æ—¶é—´ä¸ºtimeå¤„æˆªå–256ä¸ªsampleæ±‚MFCCï¼Œtimeå•ä½ä¸ºæ¯«ç§’ã€‚
 % MFCC implement with Matlab %  
 [x,fs]=audioread(filename);
 x=x(:,1);
 x(1:round(fs*time/1000))=[];
-bank=melbankm(24,256,fs,0,0.4,'t'); %MelÂË²¨Æ÷µÄ½×ÊıÎª24£¬FFT±ä»»µÄ³¤¶ÈÎª256£¬²ÉÑùÆµÂÊÎª16000Hz  
-%¹éÒ»»¯MelÂË²¨Æ÷×éÏµÊı  
+x=resample(x,16000,fs);
+fs=16000;
+bank=melbankm(24,256,fs,0,0.4,'t'); %Melæ»¤æ³¢å™¨çš„é˜¶æ•°ä¸º24ï¼ŒFFTå˜æ¢çš„é•¿åº¦ä¸º256ï¼Œé‡‡æ ·é¢‘ç‡ä¸º16000Hz  
+%å½’ä¸€åŒ–Melæ»¤æ³¢å™¨ç»„ç³»æ•°  
 bank=full(bank); %full() convert sparse matrix to full matrix  
 bank=bank/max(bank(:));  
 for k=1:12  
     n=0:23;  
     dctcoef(k,:)=cos((2*n+1)*k*pi/(2*24));  
 end  
-w=1+6*sin(pi*[1:12]./12);%¹éÒ»»¯µ¹Æ×ÌáÉı´°¿Ú  
-w=w/max(w);%Ô¤¼ÓÖØÂË²¨Æ÷  
+w=1+6*sin(pi*[1:12]./12);%å½’ä¸€åŒ–å€’è°±æå‡çª—å£  
+w=w/max(w);%é¢„åŠ é‡æ»¤æ³¢å™¨  
 xx=double(x);  
-xx=filter([1-0.9375],1,xx);%ÓïÒôĞÅºÅ·ÖÖ¡  
-xx=xx(1:256);%¶Ôxx 256µã·ÖÎªÒ»Ö¡ 
-%¼ÆËãÃ¿Ö¡µÄMFCC²ÎÊı   
+xx=filter([1-0.9375],1,xx);%è¯­éŸ³ä¿¡å·åˆ†å¸§  
+xx=xx(1:256);%å¯¹xx 256ç‚¹åˆ†ä¸ºä¸€å¸§ 
+%è®¡ç®—æ¯å¸§çš„MFCCå‚æ•°   
 s=xx.*hamming(256);  
-t=abs(fft(s) );%FFT¿ìËÙ¸µÀïÒ¶±ä»»  
+t=abs(fft(s) );%FFTå¿«é€Ÿå‚…é‡Œå¶å˜æ¢  
 t=t.^2;  
 c1=dctcoef*log(bank*t(1:129));  
 c2=c1.*w';  
