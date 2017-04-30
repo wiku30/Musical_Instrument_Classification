@@ -15,7 +15,6 @@ function varargout=ceps(varargin)
     freq=fft(sig,n);
     logamp=log(abs(freq));
     cp=abs(ifft(logamp));
-    subplot(2,1,1);
     plot(0:1/n:1-1/n,cp(1:n));
     varargout{1}=cp;
     xlim([0.002,0.1]); % base: 100-5000Hz
