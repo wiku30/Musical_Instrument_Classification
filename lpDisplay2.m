@@ -1,0 +1,14 @@
+figure(1);
+lptest('piece/PFNOF39.WAV');
+figure(2);
+lptest('piece/PFNOF51.WAV');
+figure(3);
+lptest('piece/PFPEP39.WAV');
+figure(4);
+lptest('piece/VNNOF39.WAV');
+figure(5);
+lptest('piece/VNPCF39.WAV');
+figure(6);
+lptest('piece/VNNOP39.WAV');
+figure(7);
+lptest('piece/VNPZF39.WAV');

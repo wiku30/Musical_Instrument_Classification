@@ -1,20 +1,22 @@
+lvl=12;
+
 figure(1);
 [in1,fs]=audioread('wav/pi/1 C.mp3');
-[ar,e,k]=lpcauto(in1);
+[ar,e,k]=lpcauto(in1,lvl);
 plot(ar);
 figure(2);
 [in1,fs]=audioread('wav/pi/5 G.mp3');
-[ar,e,k]=lpcauto(in1);
+[ar,e,k]=lpcauto(in1,lvl);
 plot(ar);
 figure(3);
 [in1,fs]=audioread('wav/vi1.wav');
-[ar,e,k]=lpcauto(in1);
+[ar,e,k]=lpcauto(in1,lvl);
 plot(ar);
 figure(4);
 [in1,fs]=audioread('wav/vi5.wav');
-[ar,e,k]=lpcauto(in1);
+[ar,e,k]=lpcauto(in1,lvl);
 plot(ar);
 figure(5);
 [in1,fs]=audioread('wav/vichord.wav');
-[ar,e,k]=lpcauto(in1);
+[ar,e,k]=lpcauto(in1,lvl);
 plot(ar);
