@@ -1,8 +1,12 @@
-function varargout=ceps(varargin)
+function varargout=ceps(varargin) 
+%out1: ceps 
+%out2: area of ceps
+%out3: peak style
     filename=varargin{1};
+    xmax = 0.14;
 
     [in1,fs]=audioread(filename);
-    n=round(fs*0.1);
+    n=round(fs*xmax);
     if(nargin<=1)
         range=1:n;
     else
@@ -17,9 +21,32 @@ function varargout=ceps(varargin)
     cp=abs(ifft(logamp));
     plot(0:1/n:1-1/n,cp(1:n));
     varargout{1}=cp;
-    xlim([0.002,0.1]); % base: 100-5000Hz
+    xlim([0.002,xmax]);
     ylim([0,0.7]);
     if(nargout>=2)
         varargout{2}(1)=mean(varargout{1}(round(0.005*n):round(0.1*n)));
     end
+
+    absmax=0;
+    argmax=0;
+    k=0;
+    maxth=0.2;
+    flatth=0.05;
+    width=25;
+
+    for i=width+1:n-width
+        if (cp(i) == max(cp(i-width:i+width)) && cp(i)>absmax*maxth && cp(i)>flatth)
+            argmax=i;
+            absmax=cp(i);
+            k=k+1;
+            peak(k,1)=(i-1)/xmax;
+            peak(k,2)=absmax;
+            text(peak(k,1)/fs,peak(k,2),num2str(round(peak(k,2)*100)));
+        end
+    end
+    if(nargout >= 3)
+        varargout{3}=peak;
+
+    end
+    
 end
