@@ -30,7 +30,7 @@ for i=1:1000
     X(i,2)=1;
 end
 
-[B,~,R]=regress(profile(i:i+1000),X);
+[B,~,R]=regress(profile(i:i+999),X);
 slope=B(1);
 delta=sqrt(R'*R);
 end
