@@ -1,5 +1,5 @@
 load('TrainData.mat');
-
+%content(15:20)=0; 
 num1=0;
 num2=0;
 trainData=zeros(10,21);
@@ -34,9 +34,7 @@ for(i=1:6)
     end
 end
 
-
-
-t = templateSVM('Standardize',1);
+t = templateSVM('Standardize',);
 
 Mdl=fitcecoc(trainData(:,1:20),trainData(:,21),'Learners',t,'Cost',cost);
 label = testData(:,21);
@@ -44,8 +42,7 @@ label = testData(:,21);
 pred = predict(Mdl,testData(:,1:20));
 confMat = confusionmat(label, pred);
 for(i=1:6)
-    aconfMat(i,:)=confMat(i,:)/numtest(i);
+    confMat(i,:)=confMat(i,:)/numtest(i);
 end
 confMat
-aconfMat
-trace(aconfMat)/6
+trace(confMat)/6
