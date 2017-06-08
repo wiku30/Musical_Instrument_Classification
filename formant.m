@@ -1,6 +1,7 @@
-function  [slope,delta]=formant( filename )
+function  [slope,delta]=formant(filename, varargin )
 %UNTITLED 此处显示有关此函数的摘要
 %   此处显示详细说明
+
 [x,fs]=audioread(filename);
 x=x(:,1);
 xx=hamming(4096).*x(0.4*fs:(0.4*fs+4095),1);
@@ -11,11 +12,11 @@ ceps=fft(y);
 
 ceps(21:4076,1)=0;
 profile=real(ifft(ceps));
-
-ylim([-7,0]);
-plot(1:4096,profile);
-ylim([-7,0]);
-
+if(nargin>1)
+    ylim([-7,0]);
+    plot(1:4096,profile);
+    ylim([-7,0]);
+end
 
 i=1;
 while(i<4000)

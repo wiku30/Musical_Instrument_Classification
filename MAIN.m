@@ -1,1 +1,1 @@
-anal('piece/VNNOF51.WAV')
+anal('piece/VNNOF51.WAV',0)

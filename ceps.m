@@ -19,10 +19,13 @@ function varargout=ceps(varargin)
     freq=fft(sig,n);
     logamp=log(abs(freq));
     cp=abs(ifft(logamp));
-    plot(0:1/n:1-1/n,cp(1:n));
+    if(nargin>3)
+        plot(0:1/n:1-1/n,cp(1:n));
+        xlim([0.002,xmax]);
+        ylim([0,0.7]);
+    end
     varargout{1}=cp;
-    xlim([0.002,xmax]);
-    ylim([0,0.7]);
+    
     if(nargout>=2)
         varargout{2}(1)=mean(varargout{1}(round(0.005*n):round(0.1*n)));
     end
@@ -54,8 +57,9 @@ function varargout=ceps(varargin)
             k=k+1;
             peak(k,1)=(i-1)/xmax;
             peak(k,2)=absmax;
-
-            text(peak(k,1)/fs,peak(k,2),num2str(round(peak(k,2)*100)));
+            if(nargin>3)
+                text(peak(k,1)/fs,peak(k,2),num2str(round(peak(k,2)*100)));
+            end
         end
     end
     if(nargout >= 3)
