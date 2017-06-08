@@ -1,0 +1,1 @@
+anal('piece/VNNOF51.WAV')
