@@ -29,7 +29,7 @@ end
 for(i=1:6)
     for(j=1:6)
         if(i~=j)
-            cost(i,j)=1/sqrt(num(i));
+            cost(i,j)=(num(i))^-1;
         end
     end
 end
