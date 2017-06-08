@@ -4,7 +4,7 @@ function  [slope,delta]=formant(filename, varargin )
 
 [x,fs]=audioread(filename);
 x=x(:,1);
-xx=hamming(4096).*x(0.4*fs:(0.4*fs+4095),1);
+xx=hamming(4096).*x(0.2*fs:(0.2*fs+4095),1);
 
 y=log(abs(fft(xx)));
 

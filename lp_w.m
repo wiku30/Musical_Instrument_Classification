@@ -8,6 +8,7 @@ function [ar,mag]=lp_w(file,time,varargin)
     end
     l=length(time);
     ar = zeros (l,lvl+1);
+    mag=0;
     for i = 1:length(time)
         t = time(i);
         if(round((t+0.2)*fs)>length(wav))

@@ -36,7 +36,7 @@ function varargout=ceps(varargin)
     maxth=0.2; % min ratio between consequent peaks
     flatth=0.03;
     width=12;
-    peak=zeros(1,2);
+    peak=
     for i=width+1:n-width
         if(i>n-width)
             break;
