@@ -1,0 +1,17 @@
+load('Model.mat');
+[xx,fs]=audioread('../canon3.mp3');
+xx=xx(:,1);
+xx=resample(xx,44100,fs);
+fs=44100;
+vec=zeros(130,32);
+for i=1:130
+    vec(i,:)=anal(xx,fs,i*0.1);
+end
+pred=predict(Mdl,vec);
+name=['guitar';'Sax';'Flute';'Piano';'Trumpet';'Violin'];
+for i=1:130
+    np()
+
+    
+    
+    

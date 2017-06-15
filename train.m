@@ -1,6 +1,6 @@
 load('TrainData1.mat');
 
-
+rand('seed', 0.618);
 dim=32;
 num1=0;
 num2=0;
@@ -49,6 +49,8 @@ confMat = confusionmat(label, pred);
 for(i=1:6)
     aconfMat(i,:)=confMat(i,:)/numtest(i);
 end
-confMat
-aconfMat
+save('Model.mat','Mdl');
+
+confMat;
+aconfMat;
 trace(aconfMat)/6
