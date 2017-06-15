@@ -4,7 +4,7 @@ num1=0;
 num2=0;
 trainData=zeros(10,21);
 testData=zeros(10,21);
-for(i=1:length(content))
+for i=1:length(content)
     if(rand()<0.5)
         num1=num1+1;
         trainData(num1,:)=content(i,:);
@@ -17,7 +17,7 @@ end
 
 
 num = zeros(6,1);
-for(i=1:length(trainData))
+for i=1:length(trainData)
     num(trainData(i,21)+1)=num(trainData(i,21)+1)+1;
 end
 
