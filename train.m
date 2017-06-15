@@ -1,9 +1,11 @@
-load('TrainData.mat');
+load('TrainData1.mat');
 
+
+dim=32;
 num1=0;
 num2=0;
-trainData=zeros(10,21);
-testData=zeros(10,21);
+trainData=zeros(10,dim+1);
+testData=zeros(10,dim+1);
 for i=1:length(content)
     if(rand()<0.5)
         num1=num1+1;
@@ -18,12 +20,12 @@ end
 
 num = zeros(6,1);
 for i=1:length(trainData)
-    num(trainData(i,21)+1)=num(trainData(i,21)+1)+1;
+    num(trainData(i,dim+1)+1)=num(trainData(i,dim+1)+1)+1;
 end
 
 numtest = zeros(6,1);
 for(i=1:length(testData))
-    numtest(testData(i,21)+1)=numtest(testData(i,21)+1)+1;
+    numtest(testData(i,dim+1)+1)=numtest(testData(i,dim+1)+1)+1;
 end
 
 for(i=1:6)
@@ -38,10 +40,10 @@ end
 
 t = templateSVM('Standardize',1);
 
-Mdl=fitcecoc(trainData(:,1:20),trainData(:,21),'Learners',t,'Cost',cost);
-label = testData(:,21);
+Mdl=fitcecoc(trainData(:,1:dim),trainData(:,dim+1),'Learners',t,'Cost',cost);
+label = testData(:,dim+1);
 
-pred = predict(Mdl,testData(:,1:20));
+pred = predict(Mdl,testData(:,1:dim));
 confMat = confusionmat(label, pred);
 for(i=1:6)
     aconfMat(i,:)=confMat(i,:)/numtest(i);

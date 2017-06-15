@@ -1,5 +1,5 @@
 load('TrainData.mat');
-%content(15:20)=0; 
+
 num1=0;
 num2=0;
 trainData=zeros(10,21);
@@ -29,20 +29,23 @@ end
 for(i=1:6)
     for(j=1:6)
         if(i~=j)
-            cost(i,j)=1/sqrt(num(i));
+            cost(i,j)=(num(i))^-1;
         end
     end
 end
 
-t = templateSVM('Standardize',);
+
+
+t = templateSVM('Standardize',1);
 
 Mdl=fitcecoc(trainData(:,1:20),trainData(:,21),'Learners',t,'Cost',cost);
 label = testData(:,21);
-
+save('SVM.mat','Mdl');
 pred = predict(Mdl,testData(:,1:20));
 confMat = confusionmat(label, pred);
 for(i=1:6)
-    confMat(i,:)=confMat(i,:)/numtest(i);
+    aconfMat(i,:)=confMat(i,:)/numtest(i);
 end
 confMat
-trace(confMat)/6
+aconfMat
+trace(aconfMat)/6
