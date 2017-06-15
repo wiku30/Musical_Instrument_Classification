@@ -11,4 +11,5 @@ function vec = anal(xx, fs, time)
     [sl,r] = formant(xx, fs, time);
     vec(19)=sl;
     vec(20)=r;      % 19-20: spectral outline
+    vec(21:32)=MFCC(xx, fs, time);
 end
