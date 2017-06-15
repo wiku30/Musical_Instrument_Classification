@@ -5,7 +5,7 @@ width=4096;
 numcoef=20;
 
 
-xx=hamming(width).*xx((time*fs+1):(time*fs+width));
+xx=hamming(width).*xx(round(time*fs+1):round(time*fs+width));
 
 y=log(abs(fft(xx)));
 

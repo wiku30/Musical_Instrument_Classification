@@ -3,7 +3,7 @@ function m=MFCC( xx, fs, time )
 %   此处显示详细说明
 % MFCC implement with Matlab %  
 width=4096;
-xx=xx((time*fs+1):(time*fs+width));
+xx=xx(round(time*fs+1):round(time*fs+width));
 bank=melbankm(24,width,fs); %Mel滤波器的阶数为24，FFT变换的长度为256，采样频率为16000Hz  
 %归一化Mel滤波器组系数  
 bank=full(bank); %full() convert sparse matrix to full matrix  
