@@ -1,37 +1,33 @@
-function  [slope,delta]=formant(filename, varargin )
+function  [slope,delta]=formant(xx, fs, time)
 %UNTITLED 此处显示有关此函数的摘要
 %   此处显示详细说明
+width=4096;
+numcoef=20;
 
-[x,fs]=audioread(filename);
-x=x(:,1);
-xx=hamming(4096).*x(0.2*fs:(0.2*fs+4095),1);
+
+xx=hamming(width).*xx((time*fs+1):(time*fs+width));
 
 y=log(abs(fft(xx)));
 
 ceps=fft(y);
 
-ceps(21:4076,1)=0;
-profile=real(ifft(ceps));
-if(nargin>1)
-    ylim([-7,0]);
-    plot(1:4096,profile);
-    ylim([-7,0]);
-end
+ceps((numcoef+1):(width-numcoef),1)=0;
+envelop=real(ifft(ceps));  %can plot the envelop here 
 
 i=1;
 while(i<4000)
-    if(profile(i+10) < profile(i))
+    if(envelop(i+10) < envelop(i))
         break;
     end
     i=i+10;
 end
-X=zeros(1000,2);
-for i=1:1000
+X=zeros(width/4,2);
+for i=1:(width/4)
     X(i,1)=i;
     X(i,2)=1;
 end
 
-[B,~,R]=regress(profile(i:i+999),X);
+[B,~,R]=regress(envelop(i:(i+width/4-1)),X);
 slope=B(1);
 delta=sqrt(R'*R);
 end
