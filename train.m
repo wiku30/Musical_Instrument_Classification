@@ -6,6 +6,7 @@ num1=0;
 num2=0;
 trainData=zeros(10,dim+1);
 testData=zeros(10,dim+1);
+
 for i=1:length(content)
     if(rand()<0.5)
         num1=num1+1;
