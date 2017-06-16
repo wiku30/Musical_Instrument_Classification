@@ -1,7 +1,9 @@
 function MAIN1()
+%every piece of music
 dimension=32;
 time=0.2;
 content=zeros(7000,dimension+1);
+label=zeros()
 basedir='../MusicData/';
 row=1;
 
