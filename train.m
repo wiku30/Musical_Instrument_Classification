@@ -1,3 +1,4 @@
+clear;
 load('TrainData1.mat');
 
 rand('seed', 0.618);
@@ -51,6 +52,6 @@ for(i=1:6)
 end
 save('Model.mat','Mdl');
 
-confMat;
-aconfMat;
+confMat
+aconfMat
 trace(aconfMat)/6

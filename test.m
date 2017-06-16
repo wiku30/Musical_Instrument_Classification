@@ -1,12 +1,17 @@
 load('Model.mat');
-[xx,fs]=audioread('../Hatsukoi.mp3');
+[xx,fs]=audioread('pre_music/kiminona.mp3');
 xx=xx(:,1);
 xx=resample(xx,44100,fs);
 fs=44100;
-length=1000;
+
+interval = 0.2;
+aaa=size(xx,1);
+
+length=round(aaa/44100/interval-2);
 vec=zeros(length,32);
+np=('');
 for i=1:length
-    vec(i,:)=anal(xx,fs,i*0.1);
+    vec(i,:)=anal(xx,fs,i*0.2);
 end
 pred=predict(Mdl,vec);
 name=['Gui';'Sax';'Flu';'Pia';'Tru';'Vio'];
