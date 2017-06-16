@@ -1,7 +1,7 @@
 function MAIN1()
 dimension=32;
 time=0.2;
-content=zeros(7564,dimension+1);
+content=zeros(7000,dimension+1);
 basedir='../MusicData/';
 row=1;
 
@@ -21,6 +21,9 @@ for i=1:6
         for k=1:s(1)
             filename=wavfile(k).name;
             if wavfile(k).bytes<40000
+                continue;
+            end
+            if filename(1:4)=='VNPZ'
                 continue;
             end
             [xx,fs]=audioread([basedir,foldername,subfoldername,filename]);
