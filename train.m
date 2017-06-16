@@ -1,5 +1,5 @@
 clear;
-load('TrainData2.mat');
+load('TrainData1.mat');
 
 rand('seed', 0.618);
 dim=32;
@@ -10,7 +10,7 @@ testData=zeros(10,dim+1);
 
 for i=1:length(content)
     
-    if(rand()<0.9)
+    if(rand()<0.5)
         num1=num1+1;
         trainData(num1,:)=content(i,:);
     else
