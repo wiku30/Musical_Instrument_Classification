@@ -1,7 +1,7 @@
 clear;
 load('TrainData_ori.mat');
 
-%rand('seed', 0.618);
+rand('seed', 0.618);
 dim=32;
 num1=0;
 num2=0;
