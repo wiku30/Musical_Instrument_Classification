@@ -43,9 +43,9 @@ t(6)=text(0.5,1,'Start','fontsize',80,'color','white');
 prediction=zeros(1,l);
 
 sound(xx,44100);
-
+tic;
 for i=1:l
-    tic;
+    
     vec=anal(xx,fs,i*0.1);
     pred=predict(Mdl,vec);
     prediction(1,i)=pred;
@@ -63,7 +63,10 @@ for i=1:l
         end
         t(j)=text(2.5,j-1,n,'fontsize',60,'color','white');
     end
-    pause(0.1-toc);
+    while(toc < 0.1 * i)
+        pause(0.01);
+    end
+    
 end
 
 delete(t);
