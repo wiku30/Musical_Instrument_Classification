@@ -9,8 +9,7 @@ trainData=zeros(10,dim+1);
 testData=zeros(10,dim+1);
 
 for i=1:length(content)
-    content(i,1:14)=0;
-    content(i,21:32)=0;
+
     if(rand()<0.5)
         num1=num1+1;
         trainData(num1,:)=content(i,:);
