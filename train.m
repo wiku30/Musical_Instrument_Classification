@@ -10,7 +10,7 @@ testData=zeros(10,dim+1);
 
 for i=1:length(content)
     
-    if(rand()<0.5)
+    if(rand()<0.9)
         num1=num1+1;
         trainData(num1,:)=content(i,:);
     else

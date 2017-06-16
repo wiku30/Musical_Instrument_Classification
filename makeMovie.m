@@ -8,7 +8,7 @@ fs=44100;
 l=round(length(xx)/4410)-10;
 
 
-sound(xx,44100);
+
 
 
 
@@ -16,7 +16,7 @@ sound(xx,44100);
 figure %新建一张图
 axis off
 axis([0 5 -1 6]);%定义x轴（从0到5）和y轴的范围（从0到2）
-set(gcf, 'position', [0 0 1000 1000]);
+set(gcf, 'position', [0 0 1100 1000]);
 
 ha=axes('units','normalized','position',[0 0 1 1]);
 uistack(ha,'down')
@@ -42,6 +42,7 @@ t(5)=text(0.5,1,'Start','fontsize',80,'color','white');
 t(6)=text(0.5,1,'Start','fontsize',80,'color','white');
 prediction=zeros(1,l);
 
+sound(xx,44100);
 
 for i=1:l
     tic;
