@@ -15,7 +15,6 @@ end
 for i=1:6 
     aconfMat(i,:)=confMat(i,:)/numtest(i);
 end
-save('Model.mat','Mdl');
 
 confMat
 aconfMat
