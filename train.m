@@ -1,5 +1,5 @@
 clear;
-load('TrainData1.mat');
+load('TrainData2.mat');
 
 rand('seed', 0.618);
 dim=32;
@@ -51,7 +51,7 @@ confMat = confusionmat(label, pred);
 for(i=1:6)
     aconfMat(i,:)=confMat(i,:)/numtest(i);
 end
-save('Model.mat','Mdl');
+save('Model2.mat','Mdl');
 
 confMat
 aconfMat

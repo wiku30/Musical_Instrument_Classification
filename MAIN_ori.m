@@ -79,7 +79,7 @@ for i=1:9
     end
 end
 fprintf('piano\n');
-filename=['NOF';'NOM';'STF';'STM'];
+filename=['NOF';'NOM';'STF';'STM';'M7F';'M7M';'M7P';'M8F';'M8M';'M8P';'M9F';'M9M';'M9P'];
 for i=1:4
     for j=7:25
         for x=211:212
